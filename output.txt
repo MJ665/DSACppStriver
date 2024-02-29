@@ -1,1 +1,5 @@
-hey this is 2
+346
+1 we are printing the first pair and now we are printing the second pair3
+1 this is printing the first element of the first tuple2 this will print the second the second of the second 
+3this will print the first63this will  print the first fo the second 46this will print the first of the second
+5
