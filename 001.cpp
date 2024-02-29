@@ -18,6 +18,68 @@ void examplePair(){
     cout<<a.first<<"this will print the first"<<a.second.first<<"this will  print the first fo the second "<<a.second.second<<"this will print the first of the second"<<endl;
  
 }
+void explainVector(){
+    vector<int> v;
+    v.push_back(1);
+    v.emplace_back(2);
+    // vector is the of dynamic size array is a constant size bbut vector is of variable size
+    vector<pair<int,int>>vec;
+    v.push_back({1,3});
+    v.emplace_back(1,2);
+    // the push_back does not by default that the input is the pair 
+    // the emplace_back  have the different syntax it by default understands the input is the pair
+
+    vector <int> v(5,100);// this means the vector with 5 instances of 100 value is declared {100,100,100,100,100}
+    vector<int > v(5);//this means the vector of size 5 with 0 or any garbage value is declared
+    vector<int>v1(5,20);//   this means the vector of the size 5 of value 20 {20,20,20,20,20}
+    vector<int > v2(v1); // to copy vector 1 in the vector 2
+    // since the vector is dynamic in nature if we declare its by default size then also we and increase its size
+    // the vector can be accessed in the same way as the array
+
+    vector<int>::iterator it =v.begin(); // here we can say any thing for the iterattor and v.begin () gives the address  of the element and when we do it ++ the addtess is increased
+    it++;
+    cout<<*(it)<<" ";
+    cout<<v[0]<< " " << v.at(0);
+
+
+    it = it +2;
+    cout<<  * (it)<< " ";
+    vector<int> :: iterator it =v.end(); // suppose {12,34,63,45} we will think that it will point on the 45 but no to get it point out on 45 we have to do -1 of the iterator it is by default at the place of vector lengths place
+    vector <int > :: iterator it =v.rend();// this is the first element after reversing the vector
+    vector <int > :: iterator  it = v.rbegin();// this is the last element after reversion the vector
+    cout << v[0]<< " "<<v.at(0);
+    cout<<v.back()<< " ";// this is the length of vector -1 means last element of the input array or vector
+    for (vector<int> :: iterator it =v.begin(); it != v.end();it++){
+        cout<<*(it)<<" ";
+
+    };
+    for (auto it =v.begin(); it != v.end(); it++){// auto is the stl function which automatically assign the new variable as per the int , float, char input
+        cout << *(it) << " ";
+    };
+    for (auto it : v){ // for  each loog for vectors
+    cout << it << " ";
+    };
+    // {10,20,30,40,50}
+    v.erase(v.begin()+1);
+    // {10,20,30,40,50,60,70}
+    v.erase (v.begin()+2,v.begin()+4)
+
+    // Insert function 
+    vector<int> v(2,100); // 100,100
+    v.insert(v.begin(),300); // 300,100,100
+    v.insert (v.begin()+1,2,10) // 300,10,10,100,100
+    vector <int> copy (2,50); // 50,50
+    v.insert (v.begin(),copy.begin(),copy,end());// 50,50,300,10,10,100,100
+    // 10,20
+    cout << v.size();// 2
+    v.pop_back();//10
+    // v1 -> 10,20
+    // v2 -> 30,40
+    v1.swap(v2);
+    v.clear() ;
+    cout<<v.empty();
+    
+}
 
 int main () {
   int i ;
