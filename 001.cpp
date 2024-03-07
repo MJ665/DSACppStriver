@@ -20,8 +20,8 @@ void examplePair(){
 }
 void explainVector(){
     vector<int> v;
-    v.push_back(1);
-    v.emplace_back(2);
+    v.push_back(1);// it push i in the enmpty container 
+    v.emplace_back(2);// it dynamicaly increase the size and emplace_back works faster then the push_back
     // vector is the of dynamic size array is a constant size bbut vector is of variable size
     vector<pair<int,int>>vec;
     v.push_back({1,3});
@@ -38,7 +38,7 @@ void explainVector(){
 
     vector<int>::iterator it =v.begin(); // here we can say any thing for the iterattor and v.begin () gives the address  of the element and when we do it ++ the addtess is increased
     it++;
-    cout<<*(it)<<" ";
+    cout<<*(it)<<" "; // it  -> this is the address of the element and *(it) will give the vlaue at that memory 
     cout<<v[0]<< " " << v.at(0);
 
 
@@ -62,7 +62,7 @@ void explainVector(){
     // {10,20,30,40,50}
     v.erase(v.begin()+1);
     // {10,20,30,40,50,60,70}
-    v.erase (v.begin()+2,v.begin()+4)
+    v.erase (v.begin()+2,v.begin()+4) // result will be {10,20,50,60,70} [start,end)
 
     // Insert function 
     vector<int> v(2,100); // 100,100
@@ -75,11 +75,71 @@ void explainVector(){
     v.pop_back();//10
     // v1 -> 10,20
     // v2 -> 30,40
-    v1.swap(v2);
+    v1.swap(v2); // v1-> 30,40 and v2 -> 10,20
     v.clear() ;
     cout<<v.empty();
     
 }
+
+
+void explainList (){
+    list <int> ls ;
+    ls.push_back(2); // 2
+    ls.emplace_back (3); // 2,3
+    ls.push_front(5); // 5,2,4
+    ls.emplace_front();
+    // rest function same as vector
+    // begin,end,rbegin,rend,clear,insert,size,swap
+}
+
+
+
+void explainDequeue(){
+    deque<int> dq;
+    dq.push_back(1); //1
+    dq.emplace_back(2); // 1,2
+    dq.push_front(4); // 4,1,2
+    dq.emplace_front (3); // 3,4,1,2
+    dq.pop_back(); // 3,4,1
+    dq.pop_front (); // 4,1
+    dq.back();
+    dq.front();
+    // rest function same as vector
+    // begin, end, rbegin, rend, clear, insert , size , swap
+}
+
+
+void explianSatck(){ // LIFO lsast in first out in stack we have only three operatoins push pop and top
+    satck<int> st;
+    st.push(1); // 1
+    st.push(2); // 2,1
+    st.push (3); // 3,2,1
+    st.push(3); // 3,3,2,1
+    st.emplace(5); // 5,3,3,2,1
+    cout<<st.top(); // prints 5 " we dont have access of the indes **st[2] is invalid **"
+    st.pop(); // st looks like 3,3,2,1
+    cout<< st.top(); // 3
+    cout<< st.size(); // 4
+    cout << st.empty(); // flase
+
+    stack<int>st1,st2;
+    st1.swap(st2);
+
+}
+
+
+void explainQueue(){
+
+    queue <int> q;
+    q.push(1); // 1
+    q.push(2); // 1,2
+    q.emplace (4); // 1,2,4
+
+}
+
+
+
+
 
 int main () {
   int i ;
