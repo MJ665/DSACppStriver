@@ -20,7 +20,7 @@ void examplePair(){
 }
 void explainVector(){
     vector<int> v;
-    v.push_back(1);// it push i in the enmpty container 
+    v.push_back(1);// it push 1 in the enmpty container 
     v.emplace_back(2);// it dynamicaly increase the size and emplace_back works faster then the push_back
     // vector is the of dynamic size array is a constant size bbut vector is of variable size
     vector<pair<int,int>>vec;
