@@ -20,7 +20,7 @@ void examplePair(){
 }
 void explainVector(){
     vector<int> v;
-    v.push_back(1);// it push 1 in the enmpty container 
+    v.push_back(1);// it push i in the enmpty container 
     v.emplace_back(2);// it dynamicaly increase the size and emplace_back works faster then the push_back
     // vector is the of dynamic size array is a constant size bbut vector is of variable size
     vector<pair<int,int>>vec;
@@ -128,18 +128,212 @@ void explianSatck(){ // LIFO lsast in first out in stack we have only three oper
 }
 
 
-void explainQueue(){
+void explainQueue(){// queue is a fifo data structure first in first out
 
     queue <int> q;
     q.push(1); // 1
     q.push(2); // 1,2
     q.emplace (4); // 1,2,4
+    q.back() += 5;
+    cout<<q.back(); // prints 9
+    // q is 1,2,9
+    cout<< q.front(); // prints 1
+    q.pop(); // 2,9
+    cout<<q.front(); // prints 2
+     // size swap empty some as stack
 
 }
 
 
+// priority queue is not a linear data structure inside of this a tree data structure is maintained so the time for operations are costly
+void explainPriorityQueue(){
+    priority_queue<int> pq; // this priority queue with by default max value at top is also called max heap
+    pq.push(5); // 5
+    pq.push(8); // 5,2
+    pq.push(8); // 8,5,2
+    pq.emplace(10); // 10,8,5,2
+    cout<<pq.top(); // prints 10
+    pq.pop(); // 8,5,2
+    cout<<pq.top(); // prints 8
+    // by default the priority quesus is initialized as the highest value element is at the top
+    // size sway empty function are same as others
+
+    // min heap
+    priority_queue<int,vector<int>,greater<int>> pq;
+    pq.push(5); // 5
+    pq.push(2); // 2,5
+    pq.push(8); // 2,5,8
+    pq.emplace(10); // 2,5,8,10
+    cout<<pq.top(); // prints 10
+
+}
 
 
+void explainSet (){
+
+    // in set everything occurs in the logarithmic of n every operation
+    set<int> st;
+    st.insert(1); //1
+    st.emplace(2); // 1,2
+    st.insert (2); // 1,2,
+    st.insert (4); // 1,2,4
+    st.insert ( 3) ; // 1,2,3,4
+
+    // functionality of insert in vector
+    // can be used also that only incresases
+    // efficiency
+
+    // begin (), end(), rbegin(), rend(), size( ) , empty (), swap ( ) are same as those of above
+
+    // 1,2,3,4,5
+    auto it = st.find (3);
+    // 1,2,3,4,5
+    auto it = st.find(6);
+    //1,4,5
+    st.erase (5); // erases 5 takes logarithmic time
+
+    int cnt = st.count (1); // will always give 1 or 0 beacouse duplicate element not allowed
+    auto it = st.find(3);
+    st.erase (it); // it take constant time
+
+    // 1,2,3,4,5
+    auto it1 = st.find(2);
+    auto it2 = st.find(4);
+    st.erase (it1,it2); // after ersase 1,4,5 [first, last)
+
+    // lowewr_bound ( ) & upper_bound() function works in the same way
+    // as in vector it does 
+    // this is the syntax
+
+    auto it = st.lower_bound(2);
+    auto it= st.upper_bound(3);
+}
+
+void explainMultiSet(){
+    // every this is same as the set
+    // only stores duplicate elements
+
+    multiset<int> ms;
+    ms.insert(1);// 1
+    ms.insert(1);// 1,1
+    ms.insert(1);// 1,1,1
+    ms.insert(1);// 1,1,1,1
+
+    ms.erase (1);// all the 1 are erased and ramining in null set
+    // when we give erase the element it erases all the element and the duplicate element
+    // when we say erase element at address the without changing any duplicate element it erases that address
+
+    int cnt = ms.count (1); // ->4
+
+    // only a single one erased
+    ms.erase ( ms.find(1));
+
+    ms.erase(ms.find(1),ms.find(1) + 2)
+    // rest all function same as set
+}
+
+void explainUnorderedSet(){
+    unordered_set<int> st;
+    //lower_bound and upper_bound function
+    // does not works, rest all function are same
+    // as above , it does not stores in any 
+    // particular order it has a better complexity
+    // than set in most cases , except some when collisions happens
+
+    // all the operation are same and they work in big O of 1 and it give worst complexity as big O of N
+}
+
+
+void explainMap(){
+    // map data structure suppose is school 3 people with the name raj then our data structure will store the roll number as key and the name as the value so that we can uniquely identify them
+    // the key and value can be of any data type int string double pair
+    map <int,int> mpp;
+    map <int,pair<int,int>> mpp;
+    map <pair<int,int>,int> mpp;
+     mpp [{2,3}]=10;
+
+// suppose we take an example
+    map <int,int> mpp;
+    mpp [1]= 2;
+    mpp.emplace({3,1});
+    mpp.insert ({2,4});
+    // map stores unique keys in sorted order 
+
+    // {
+    //     {1,2}
+    //     {2,4}
+    //     {3,1}
+    // }
+
+    for (auto it:mpp){
+        cout<<it.first<<" "<< it.second<< endl;
+    }
+    cout<<mpp[1];
+    cout<<mpp[5] ;
+    
+    auto it = mpp.find(3);
+    cout<< *(it).second; // *(it) -> gives expamle {3,5} amd *(it).second -> gives 5
+    auto it = mpp.find (5);
+
+    auto it = mpp.lower_bound(2);
+    auto it = mpp.upper_bound(3);
+    // and other function erase swap size empty are same
+}
+
+void explainMultiMap(){
+    // everythisn same as map only it can store multiple keys
+    // only mpp[key] cannot be used here
+}
+
+void explainUnorderedMap(){
+    // same as set and unordered_set difference every thing in O(1) and worst case O(N)
+}
+
+bool comp (pair<int,int> p1, pair <int,int>p2){
+    if (p1.second <p2.second){
+        return true;
+    }else if (p1.second == p2.second){
+        if (p1.first > p2.second) return true ;
+    }
+    return false;
+}
+
+void explainSort(){
+
+    
+    sort (a,a+n);
+    sort (v.begin(),b.end());
+
+    // if 1,5,3,2 then  sort [start,end)
+    sort (a+2,a+4);
+
+    // to sort them in decending order
+    sort (a,a+n,greater<int>);
+
+
+    pair <int,int> a[]={{1,2},{2,1},{4,1}};
+
+    // sort if according to second element
+    // if second element is same , then sort 
+    // it according to first element but in descending order
+
+    sort (a,a+n,comp);
+    // {4,1},{2,1},{1,2};
+
+    int num = 7;
+    int cnt = __builtin_popcount();
+
+    long long num = 165786578687;
+    int cnt  = __builtin_popcountll();
+
+    string s = "123";
+    do { 
+        count << s<<endl;
+    }while(next_permutation(s.begin(),s.end()));
+
+    int maxi = * max_element(a,a+n)
+
+}
 
 int main () {
   int i ;
