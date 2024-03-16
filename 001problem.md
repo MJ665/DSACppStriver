@@ -362,3 +362,117 @@ long long b = 2;
    return ans;
 }
 ```
+
+
+Problem statement
+Given an array 'arr' of size 'n'.
+
+
+
+Return an array with all the elements placed in reverse order.
+
+
+
+Note:
+You don’t need to print anything. Just implement the given function.
+Example:
+Input: n = 6, arr = [5, 7, 8, 1, 6, 3]
+
+Output: [3, 6, 1, 8, 7, 5]
+
+Explanation: After reversing the array, it looks like this [3, 6, 1, 8, 7, 5].
+Detailed explanation ( Input/output format, Notes, Images )
+Sample Input 1:
+8
+3 1 1 7 4 2 6 11
+Sample Output 1:
+11 6 2 4 7 1 1 3    
+Explanation Of Sample Input 1 :
+After reversing the array, it looks like this [11, 6, 2, 4, 7, 1, 1, 3].
+Sample Input 2:
+4
+8 1 3 2
+Sample Output 2:
+2 3 1 8
+Explanation Of Sample Input 2 :
+After reversing the array, it looks like this [2, 3, 1, 8].
+Expected time complexity
+The expected time complexity is O(n).
+Constraints:
+1 <= 'n' <= 10^6
+-10^9 <= 'arr[i]' <=10^9
+
+```cpp
+
+void reverse (int n , int i , vector<int > & ans){
+if (i>=n/2){
+    return;
+};
+swap(ans[i],ans[n-1-i]);
+
+reverse(n,i+1,ans);
+
+}
+vector<int> reverseArray(int n, vector<int> &nums)
+{
+    // Write your code here.
+    int i = 0;
+
+reverse(n,i,nums);
+return nums;
+}
+```
+
+
+
+Problem statement
+Determine if a given string ‘S’ is a palindrome using recursion. Return a Boolean value of true if it is a palindrome and false if it is not.
+
+Note: You are not required to print anything, just implement the function. Example:
+Input: s = "racecar"
+Output: true
+Explanation: "racecar" is a palindrome.
+Detailed explanation ( Input/output format, Notes, Images )
+Sample Input 1:
+abbba
+Sample Output 1:
+true
+Explanation Of Sample Input 1 :
+“abbba” is a palindrome
+Sample Input 2:
+abcd
+Sample Output 2:
+false
+Explanation Of Sample Input 2 :
+“abcd” is not a palindrome.
+Constraints:
+0 <= |S| <= 10^6
+where |S| represents the length of string S.
+
+
+``` cpp
+void reverse(int i , int n , string& str){
+    if (i>n/2){
+        return ;
+    };
+    swap(str[i], str[n-i-1]);
+    reverse(i+1,n,str);
+}
+
+bool isPalindrome(string& str) {
+    // Write your code here.
+int i =0;
+
+int n = str.length();
+string nstr(str);
+reverse(i,n,nstr);
+return str == nstr;
+}
+
+
+```
+
+
+
+
+
