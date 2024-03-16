@@ -235,3 +235,130 @@ vector<int> printNos(int x) {
 }
 ```
 
+Problem statement
+You are given an integer ‘n’.
+
+
+
+Your task is determining the sum of the first ‘n’ natural numbers and returning it.
+
+
+
+Example:
+Input: ‘n’ = 3
+
+Output: 6
+
+Explanation: The sum of the first 3 natural numbers is 1 + 2 + 3, equal to 6.
+Detailed explanation ( Input/output format, Notes, Images )
+Sample Input 1:
+3
+Sample Output 1 :
+6
+Explanation Of Sample Input 1:
+Input: ‘n’ = 3
+
+Output: 6
+
+Explanation: The sum of the first 3 natural numbers is 1 + 2 + 3, equal to 6.
+Sample Input 2:
+5
+Sample Output 2:
+15
+Explanation of sample output 2:
+Input: ‘n’ = 5
+
+Output: 15
+
+Explanation: The sum of the first 5 natural numbers is 1 + 2 + 3 + 4 + 5, equal to 15.
+Expected Time Complexity:
+The expected time complexity is O(1).
+Expected Space Complexity:
+The expected space complexity is O(1).
+Constraints:
+1 <= n <= 10^9
+Time Limit: 1 sec
+
+```cpp
+
+long long sumFirstN(long long n) {
+  
+    // Write your code here.
+  if (n==0) {return};
+  return n+sumFirstN(n-1);
+}```
+
+
+
+Problem statement
+You are given an integer ’n’.
+
+
+
+Your task is to return a sorted array (in increasing order) containing all the factorial numbers which are less than or equal to ‘n’.
+
+
+
+The factorial number is a factorial of a positive integer, like 24 is a factorial number, as it is a factorial of 4.
+
+
+
+Note:
+In the output, you will see the array returned by you.
+Example:
+Input: ‘n’ = 7
+
+Output: 1 2 6
+
+Explanation: Factorial numbers less than or equal to ‘7’ are ‘1’, ‘2’, and ‘6’.
+Detailed explanation ( Input/output format, Notes, Images )
+Sample Input 1:
+7
+Sample Output 1 :
+1 2 6
+Explanation Of Sample Input 1:
+Input: ‘n’ = 7
+
+Output: 1 2 6
+
+Explanation: Factorial numbers less than or equal to ‘7’ are ‘1’, ‘2’, and ‘6’.
+Sample Input 2:
+2
+Sample Output 2:
+1 2
+Explanation Of Sample Input 2:
+Input: ‘n’ = 2
+
+Output: 1 2
+
+Explanation: Factorial numbers less than or equal to ‘2’ are ‘1’ and ‘2’.
+Expected Time Complexity:
+The expected time complexity is O(m), where ‘m’ is the number of factorial numbers which are less than or equal to ‘n’.
+Expected Space Complexity:
+The expected space complexity is O(m), where ‘m’ is the number of factorial numbers which are less than or equal to ‘n’.
+Constraints:
+1 <= n <= 10^18
+
+Time Limit: 1-sec
+```cpp
+void addNum( vector<long long>& ans ,long long  a,long long b, long long n){
+ if ( a>n){
+     return ;
+ };
+ ans.push_back(a);
+ a=a*b;
+ b=b+1;
+ addNum(ans,a,b,n);
+   
+
+}
+vector<long long> factorialNumbers(long long n) {
+    // Write Your Code Here
+   vector<long long> ans;
+long long a = 1;
+long long b = 2;
+
+   addNum ( ans,a,b,n);
+   return ans;
+}
+```
