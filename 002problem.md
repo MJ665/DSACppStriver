@@ -191,3 +191,243 @@ void insertionSort(int arr[], int n)
 ```
 
 
+
+
+
+# Recursive Bubble Sort
+Bubble Sort
+Easy
+40/40
+Average time to solve is 15m
+124 upvotes
+Asked in company
+Problem statement
+You are given an integer array 'arr' of size 'N'.
+
+
+
+You must sort this array using 'Bubble Sort'.
+
+
+
+Note:
+Change in the input array itself. You don't need to return or print the elements.
+Example:
+Input: ‘N’ = 7
+'arr' = [2, 13, 4, 1, 3, 6, 28]
+
+Output: [1 2 3 4 6 13 28]
+
+Explanation: After applying bubble sort on the input array, the output is [1 2 3 4 6 13 28].
+Detailed explanation ( Input/output format, Notes, Images )
+Sample Input 1:
+7
+2 13 4 1 3 6 28
+Sample Output 1:
+1 2 3 4 6 13 28
+Explanation of Sample Output 1:
+After applying bubble sort on the input array, the output is [1 2 3 4 6 13 28].
+Sample Input 2:
+5
+9 3 6 2 0
+Sample Output 2:
+0 2 3 6 9
+Explanation of Sample Output 2:
+After applying bubble sort on the input array, the output is [0 2 3 6 9].
+Constraints :
+1 <= N <= 10^3
+0 <= arr[i] <= 10^9
+Time Limit: 1 sec
+```cpp
+#include <vector>
+
+using namespace std;
+
+void myBubbleSort(vector<int>& arr, int n) {
+    for (int i = n - 1; i >= 0; i--) {
+        for (int j = 0; j < i; j++) {
+            if (arr[j] > arr[j + 1]) {
+                int temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
+            }
+        }
+    }
+}
+
+
+void myRecurBubbleSort(vector<int>& arr,int n){
+    if ( n == 1){return;};
+ 
+
+    for (int j = 0 ; j<= n-2 ; j++){
+        if (arr[j]>arr[j+1]){
+            int temp = arr[j+1];
+            arr[j+1]=arr[j];
+            arr [ j ] = temp;
+                    }
+    };
+    myRecurBubbleSort(arr, n-1);
+}
+
+void bubbleSort(vector<int>& arr, int n) {
+    // myBubbleSort(arr, n);
+    // No need to return anything in a void function
+
+    myRecurBubbleSort(arr, n);
+}
+```
+
+# Recursive Insertion Sort
+
+Problem statement
+You are given an integer array 'arr' of size 'N'.
+
+
+
+You must sort this array using 'Insertion Sort' recursively.
+
+
+
+ Note:
+Change in the input array itself. You don't need to return or print the elements.
+Example:
+Input: ‘N’ = 7
+'arr' = [2, 13, 4, 1, 3, 6, 28]
+
+Output: [1 2 3 4 6 13 28]
+
+Explanation: After applying insertion sort on the input array, the output is [1 2 3 4 6 13 28].
+Detailed explanation ( Input/output format, Notes, Images )
+Sample Input 1:
+5
+9 3 6 2 0
+Sample Output 1:
+0 2 3 6 9
+Sample Input 2:
+4
+4 3 2 1
+Sample Output 2:
+1 2 3 4 
+Constraints :
+0 <= N <= 10^3
+0 <= arr[i] <= 10^5
+Time Limit: 1 sec
+
+```cpp
+void myInsertionSort(int arr[], int n){
+for(int i =0 ;i<= n-1;i++){
+    for (int j=i; j>0 && arr[j-1]>arr[j] ; j--){
+        int temp = arr[j-1];
+         arr [ j-1] = arr[j];
+         arr[j]= temp;
+    }
+
+}
+}
+
+void myRecurInsertionSort(int arr[], int i, int n) {
+    if (i == n) {
+        return;
+    }
+    for (int j = i; j > 0 && arr[j - 1] > arr[j]; j--) {
+        int temp = arr[j - 1];
+        arr[j - 1] = arr[j];
+        arr[j] = temp;
+    }
+    myRecurInsertionSort(arr, i + 1, n); 
+}
+
+void insertionSort(int arr[], int n) {
+    myRecurInsertionSort(arr, 0, n);
+}
+
+```
+
+
+
+# Merge Sort
+
+
+Problem statement
+You are given the starting 'l' and the ending 'r' positions of the array 'ARR'.
+
+
+
+You must sort the elements between 'l' and 'r'.
+
+
+
+Note:
+Change in the input array itself. So no need to return or print anything.
+Example:
+Input: ‘N’ = 7,
+'ARR' = [2, 13, 4, 1, 3, 6, 28]
+
+Output: [1 2 3 4 6 13 28]
+
+Explanation: After applying 'merge sort' on the input array, the output is [1 2 3 4 6 13 28].
+Detailed explanation ( Input/output format, Notes, Images )
+Sample Input 1:
+7
+2 13 4 1 3 6 28
+Sample Output 1:
+1 2 3 4 6 13 28
+Explanation of Sample Output 1:
+After applying 'merge sort' on the input array, the output is [1 2 3 4 6 13 28].
+Sample Input 2:
+5
+9 3 6 2 0
+Sample Output 2:
+0 2 3 6 9
+Explanation of Sample Output 2:
+After applying 'merge sort' on the input array, the output is [0 2 3 6 9].
+Constraints :
+1 <= N <= 10^3
+0 <= ARR[i] <= 10^9
+
+```cpp
+#include <vector>
+
+void merge(int arr[], int low, int mid, int high) {
+    std::vector<int> temp;
+    int left = low;
+    int right = mid + 1;
+    while (left <= mid && right <= high) {
+        if (arr[left] <= arr[right]) {
+            temp.push_back(arr[left]);
+            left++;
+        } else {
+            temp.push_back(arr[right]);
+            right++;
+        }
+    }
+    while (left <= mid) {
+        temp.push_back(arr[left]);
+        left++;
+    }
+    while (right <= high) {
+        temp.push_back(arr[right]);
+        right++;
+    }
+    for (int i = low; i <= high; i++) {
+        arr[i] = temp[i - low];
+    }
+}
+
+void myMergeSort(int arr[], int low, int high) {
+    if (low >= high) {
+        return;
+    }
+    int mid = (low + high) / 2;
+    myMergeSort(arr, low, mid);
+    myMergeSort(arr, mid + 1, high);
+    merge(arr, low, mid, high);
+}
+
+void mergeSort(std::vector<int>& arr, int l, int r) {
+    int n = arr.size();
+    int* plainArray = &arr[0]; // Get a pointer to the first element of the vector
+    myMergeSort(plainArray, l, r);
+}
+```
