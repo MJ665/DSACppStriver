@@ -431,3 +431,67 @@ void mergeSort(std::vector<int>& arr, int l, int r) {
     myMergeSort(plainArray, l, r);
 }
 ```
+
+
+
+
+# quick Sort
+
+Problem statement
+Given the 'start' and the 'end'' positions of the array 'input'. Your task is to sort the elements between 'start' and 'end' using quick sort.
+
+
+
+Note :
+Make changes in the input array itself.
+Detailed explanation ( Input/output format, Notes, Images )
+Sample Input 1 :
+6 
+2 6 8 5 4 3
+Sample Output 1 :
+2 3 4 5 6 8
+Sample Input 2 :
+5
+1 2 3 5 7
+Sample Output 2 :
+1 2 3 5 7 
+Constraints :
+1 <= N <= 10^3
+0 <= input[i] <= 10^9
+
+
+```cpp
+#include <algorithm> // for std::swap
+
+int partitionArray(int arr[], int low, int high) {
+    int pivot = arr[low];
+    int i = low;
+    int j = high;
+    while (i < j) {
+        while (i < high && arr[i] <= pivot) {
+            i++;
+        }
+        while (j > low && arr[j] >= pivot) {
+            j--;
+        }
+        if (i < j) {
+            std::swap(arr[i], arr[j]);
+        }
+    }
+
+    std::swap(arr[j], arr[low]);
+    return j;
+}
+
+void myQuickSort(int arr[], int low, int high) {
+    if (low < high) {
+        int pIndex = partitionArray(arr, low, high);
+        myQuickSort(arr, low, pIndex);
+        myQuickSort(arr, pIndex + 1, high);
+    }
+}
+
+void quickSort(int input[], int start, int end) {
+    myQuickSort(input, start, end);
+}
+```
